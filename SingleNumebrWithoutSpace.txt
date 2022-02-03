@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int out=0;
+           unordered_map<int,int>m1;
+          for(auto i:nums)
+              m1[i]++;
+           for(auto j:m1)
+               if(j.second==1)
+                  out=j.first;
+        return out;
+          }
+};

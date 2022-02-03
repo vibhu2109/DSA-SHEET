@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        map<int,int>m;
+        bool flag=false;
+        for(auto i:nums)
+            m[i]++;
+         for(auto j:m)
+             if(j.second>1){
+                 flag=true;
+                 break;
+             }
+        if(flag)
+            return flag;
+        else
+            return flag;
+    }
+};
