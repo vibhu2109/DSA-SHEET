@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string temp="";
+        bool flag=true;
+        transform(s.begin(), s.end(), s.begin(),::tolower);
+        for(int i=0;i<s.size();++i)
+        {
+            
+            //if((abs(s[i]-'a')<26 && abs(s[i]-'z')<=26)
+              //   || (abs(s[i]-'0')<9 && abs(s[i]-'9')<=9)
+               //  && s[i]!=' ')
+            if((int(s[i])>=97 && int(s[i])<=122) ||
+               (int(s[i])>=48 && int(s[i])<=57) &&
+               s[i]!=' ')
+            {
+                 temp+=s[i];
+             }
+        }
+        cout<<temp;
+        int j=temp.size()-1;
+        int k=0;
+         while(k<j){
+            if(temp[j--]==temp[k++])
+            {
+               continue;
+            } 
+            else{
+                flag=false;
+                break;
+            }
+                
+        }
+        if(flag)
+            return true;
+        else
+            return false;
+        
+    }
+};

@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        map<char,int>res;
+        int sum=0,i=0;
+        int secondsum=0;
+        res['I']=1;
+        res['V']=5;
+        res['X']=10;
+        res['L']=50;
+        res['C']=100;
+        res['D']=500;
+        res['M']=1000;
+         while(i<s.size())
+         {
+              
+             if(i!=s.size()-1 && res[s[i]]<res[s[i+1]]){
+                 secondsum=res[s[i+1]]-res[s[i]];
+                 sum+=secondsum;
+                 i++;
+             }
+             else{
+                 sum+=res[s[i]];
+             }
+             ++i;
+         }
+         return sum; 
+        
+        
+    }
+};
