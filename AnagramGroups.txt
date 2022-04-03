@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& A) {
+    int n=A.size();
+    vector<vector<string>> res;
+    map<string, vector<string>> mp;
+
+    for(int i=0; i<n; i++){
+        string s = A[i];
+        sort(s.begin(), s.end());
+
+        mp[s].push_back(A[i]);
+
+    }
+
+    for(auto it: mp){
+        res.push_back(it.second);
+    }
+
+    return res;
+    }
+};
