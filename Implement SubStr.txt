@@ -1,0 +1,58 @@
+class Solution {
+public:
+    vector<int> prefixTable(string str)
+    {
+        vector<int>res(str.size());
+        res[0]=0;
+        int i=1,j=0;
+        while(i<str.size())
+        {
+           if(str[i]==str[j])
+           {
+               res[i]=++j;
+               i++;
+           }
+            else {
+                  if(j==0)
+                 {
+                   res[i]=0;
+                   i++;
+                 }
+                  else
+                  j=res[j-1];
+        }     
+    }
+        return res;
+    }
+    int strStr(string haystack, string needle) {
+        int lo=0;
+        int hi=0;
+        int flag=-1;
+        if(needle.size()==0)
+            return 0;
+        if(haystack.size()<needle.size()|| haystack.size()==0)
+            return -1;
+        
+        vector<int>prefix;
+        prefix=prefixTable(needle);
+        while(lo<haystack.size())
+        {
+            if(haystack[lo]==needle[hi])
+            {
+                lo++;
+                hi++;
+            }
+            if(hi==needle.size())
+                return lo-hi;
+            
+            else if(lo<haystack.size() && haystack[lo]!=needle[hi])
+            {
+                if(hi==0)
+                   lo++; 
+                else
+                   hi=prefix[hi-1];
+            }
+        }
+        return flag;
+    }
+}; 
